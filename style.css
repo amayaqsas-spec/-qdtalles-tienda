@@ -647,3 +647,50 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .btn-primary { padding: 12px; font-size: 0.9rem; }
     .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; font-size: 0.9rem; }
 }
+/* ==========================================
+   AJUSTE ESPECÍFICO: TÍTULO DE CONTACTO EN MÓVIL
+   ========================================== */
+
+/* Para tablets y móviles grandes */
+@media (max-width: 768px) {
+    .contact-info .section-title {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Para móviles normales */
+@media (max-width: 600px) {
+    .contact-info .section-title {
+        font-size: 1.3rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* También ajustamos el subtítulo de contacto */
+    .contact-description {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Y el badge "Hablemos" un poco más pequeño */
+    .contact-info .section-badge {
+        font-size: 0.75rem !important;
+        padding: 6px 15px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Para móviles pequeños */
+@media (max-width: 480px) {
+    .contact-info .section-title {
+        font-size: 1.15rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .contact-description {
+        font-size: 0.85rem !important;
+    }
+}

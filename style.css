@@ -203,7 +203,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 }
 
 /* ==========================================
-   INTRO ANIMADO CON CORAZONES GRANDES Y TRANSPARENTES
+   INTRO ANIMADO CON CORAZONES GRANDES Y FADE OUT SUAVE
    ========================================== */
 .intro-screen {
     position: fixed;
@@ -217,10 +217,16 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    /* TRANSICIÓN SUAVE Y LARGA para el fade out delicado */
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
 }
 
-.intro-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+/* Cuando se agrega la clase hidden, se desvanece suavemente */
+.intro-screen.hidden { 
+    opacity: 0; 
+    visibility: hidden; 
+    pointer-events: none; 
+}
 
 /* Contenedor de corazones grandes del intro */
 .intro-hearts-bg {
@@ -911,14 +917,12 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 @media (max-width: 768px) {
     .container { padding: 0 20px; }
     
-    /* Logo flotante más pequeño */
     .logo-float {
         width: 50px;
         top: 15px;
         left: 15px;
     }
     
-    /* Hamburguesa flotante más pequeña */
     .hamburger-float {
         top: 20px;
         right: 15px;
@@ -927,13 +931,11 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         padding: 5px 7px;
     }
     
-    /* Menú lateral más estrecho */
     .side-nav {
         width: 260px;
         padding: 90px 25px 25px;
     }
     
-    /* Hero más compacto */
     .hero-section { min-height: auto; padding: 40px 0; }
     .hero-title { font-size: 2rem; margin-bottom: 15px; }
     .hero-subtitle { font-size: 1rem; margin-bottom: 20px; }
@@ -943,42 +945,35 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .hero-card { max-width: 300px; padding: 15px; }
     .hero-card-badge { top: 20px; right: 20px; font-size: 0.75rem; padding: 6px 12px; }
     
-    /* Secciones */
     .services-section, .process-section, .testimonials-section, .contact-section { padding: 60px 0; }
     .section-title { font-size: 2rem; }
     .section-subtitle { font-size: 1rem; }
     .section-header { margin-bottom: 40px; }
     
-    /* Servicios */
     .services-grid { grid-template-columns: 1fr; gap: 20px; }
     .service-card { padding: 25px 20px; }
     .service-icon { width: 70px; height: 70px; }
     .service-icon svg { width: 35px; height: 35px; }
     .service-card h3 { font-size: 1.3rem; }
     
-    /* Proceso */
     .process-steps { grid-template-columns: 1fr; gap: 20px; }
     .step-number { font-size: 3rem; }
     .step-content { padding: 25px 20px; }
     .step-content h3 { font-size: 1.3rem; }
     
-    /* Testimonios */
     .testimonial-card { padding: 25px 20px; }
     .testimonial-text { font-size: 0.95rem; }
     
-    /* Contacto */
     .contact-info, .contact-form { padding: 25px 20px; }
     .contact-info .section-title { font-size: 1.8rem; }
     .contact-form h3 { font-size: 1.5rem; }
     
-    /* Productos */
     .product-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
     .product-image { height: 200px; }
     .category-hero { height: 180px; }
     .hero-title-banner { font-size: 2rem; }
     .hero-subtitle-banner { font-size: 1rem; }
     
-    /* Intro - Logo con latido y corazones más pequeños */
     .intro-logo-img { 
         width: 240px; 
         max-width: 65vw;
@@ -992,7 +987,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .intro-heart:nth-child(5) { width: 160px; height: 160px; font-size: 100px; }
     .intro-heart:nth-child(6) { width: 200px; height: 200px; font-size: 120px; }
     
-    /* WhatsApp subido */
     .whatsapp-float { 
         width: 55px; 
         height: 55px; 
@@ -1008,14 +1002,12 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 @media (max-width: 600px) {
     .container { padding: 0 15px; }
     
-    /* Logo flotante más pequeño */
     .logo-float {
         width: 45px;
         top: 12px;
         left: 12px;
     }
     
-    /* Hamburguesa flotante más pequeña */
     .hamburger-float {
         top: 17px;
         right: 12px;
@@ -1028,7 +1020,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         height: 2.5px;
     }
     
-    /* Menú lateral más estrecho */
     .side-nav {
         width: 240px;
         padding: 80px 20px 20px;
@@ -1039,7 +1030,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         padding: 10px 14px;
     }
     
-    /* Hero */
     .hero-title { font-size: 1.7rem; }
     .hero-subtitle { font-size: 0.9rem; }
     .hero-stats { gap: 15px; }
@@ -1048,12 +1038,10 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .hero-card { max-width: 260px; }
     .btn-cta-primary, .btn-cta-secondary { padding: 12px 24px; font-size: 0.9rem; }
     
-    /* Secciones */
     .services-section, .process-section, .testimonials-section, .contact-section { padding: 50px 0; }
     .section-title { font-size: 1.7rem; }
     .section-subtitle { font-size: 0.9rem; }
     
-    /* Servicios */
     .service-card { padding: 20px 15px; }
     .service-icon { width: 60px; height: 60px; }
     .service-icon svg { width: 30px; height: 30px; }
@@ -1061,20 +1049,17 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .service-card p { font-size: 0.9rem; }
     .service-features li { font-size: 0.85rem; }
     
-    /* Proceso */
     .step-number { font-size: 2.5rem; margin-bottom: -10px; }
     .step-content { padding: 20px 15px; }
     .step-content h3 { font-size: 1.2rem; }
     .step-content p { font-size: 0.9rem; }
     
-    /* Testimonios */
     .testimonial-card { padding: 20px 15px; }
     .testimonial-text { font-size: 0.9rem; }
     .author-avatar { width: 40px; height: 40px; font-size: 0.9rem; }
     .testimonial-author strong { font-size: 0.9rem; }
     .testimonial-author span { font-size: 0.8rem; }
     
-    /* Contacto */
     .contact-info, .contact-form { padding: 20px 15px; }
     .contact-info .section-title { font-size: 1.5rem; }
     .contact-form h3 { font-size: 1.3rem; }
@@ -1084,7 +1069,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .contact-method span { font-size: 0.85rem; }
     .social-link { padding: 8px 15px; font-size: 0.85rem; }
     
-    /* Productos */
     .product-grid { grid-template-columns: 1fr; gap: 15px; }
     .product-image { height: 220px; }
     .product-info { padding: 15px; }
@@ -1097,10 +1081,8 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .sidebar { padding: 15px 0; }
     .sidebar-title { font-size: 1.1rem; padding: 0 15px 10px; }
     
-    /* Footer */
     .footer-content { flex-direction: column; gap: 10px; text-align: center; font-size: 0.85rem; }
     
-    /* WhatsApp flotante */
     .whatsapp-float { 
         width: 50px; 
         height: 50px; 
@@ -1109,7 +1091,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     }
     .whatsapp-float svg { width: 28px; height: 28px; }
     
-    /* Modal */
     .modal { padding: 10px; }
     .modal-content { padding: 20px; max-width: 100%; }
     .modal-header h2 { font-size: 1.4rem; }
@@ -1117,17 +1098,14 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .admin-header-actions { width: 100%; justify-content: flex-end; }
     .btn-logout, .btn-exit { padding: 6px 12px; font-size: 0.8rem; }
     
-    /* Tabs admin */
     .admin-tabs { gap: 5px; }
     .tab-btn { padding: 8px 12px; font-size: 0.85rem; }
     .tab-title { font-size: 1.3rem; }
     
-    /* Categorías en admin */
     .category-item { flex-wrap: wrap; }
     .category-actions { width: 100%; justify-content: flex-end; margin-top: 5px; }
     .category-subtitle { display: none; }
     
-    /* Intro - Logo con latido y corazones más pequeños */
     .intro-logo-img { 
         width: 200px; 
         max-width: 60vw;

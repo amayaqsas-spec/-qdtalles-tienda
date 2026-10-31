@@ -14,21 +14,18 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // ==========================================
-// 2. INTRO DE BIENVENIDA (12 segundos + fade out de 2.5s)
+// 2. INTRO (8 segundos + fade out suave de 2.5s)
 // ==========================================
 function handleIntro() {
     const intro = document.getElementById('intro');
     if (!intro) return;
     
-    // 12 segundos para que se lea el texto completo
-    // Luego fade out de 2.5 segundos (definido en CSS)
     setTimeout(() => {
         intro.classList.add('hidden');
-        // Esperar a que termine el fade out de 2.5s antes de ocultar
         setTimeout(() => {
             intro.style.display = 'none';
         }, 2500);
-    }, 12000);
+    }, 8000);
 }
 
 // ==========================================
@@ -45,10 +42,7 @@ const DEFAULT_CONFIG = {
     heroImage: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500'
 };
 
-const DEFAULT_CREDENTIALS = {
-    username: 'admin',
-    password: 'qdtalles2026'
-};
+const DEFAULT_CREDENTIALS = { username: 'admin', password: 'qdtalles2026' };
 
 const DEFAULT_CATEGORIES = [
     { name: 'Tazas', subtitle: 'Diseños únicos para cada momento', order: 0 },

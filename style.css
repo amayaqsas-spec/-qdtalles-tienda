@@ -179,11 +179,11 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 }
 
 /* ==========================================
-   SECCIÓN DE BIENVENIDA (FONDO TRANSPARENTE)
+   SECCIÓN DE BIENVENIDA (SIN FONDO, INTEGRADA EN LA PÁGINA)
    ========================================== */
 .welcome-section {
     padding: 80px 0;
-    background: transparent;
+    background: transparent !important;
     position: relative;
     z-index: 1;
 }

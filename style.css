@@ -25,7 +25,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 .hidden { display: none !important; }
 
 /* ==========================================
-   CORAZONES FLOTANTES DE FONDO (PÁGINA PRINCIPAL)
+   CORAZONES FLOTANTES DE FONDO
    ========================================== */
 .floating-hearts {
     position: fixed;
@@ -46,165 +46,42 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     filter: drop-shadow(0 2px 4px rgba(255, 42, 133, 0.2));
 }
 
-.heart:nth-child(1) { 
-    font-size: 40px; 
-    left: 5%; 
-    top: 10%; 
-    animation-duration: 18s; 
-    animation-delay: 0s; 
-    color: #ff2a85;
-    opacity: 0.4;
-}
-.heart:nth-child(2) { 
-    font-size: 25px; 
-    left: 15%; 
-    top: 60%; 
-    animation-duration: 22s; 
-    animation-delay: -5s; 
-    color: #ff69b4;
-    opacity: 0.5;
-}
-.heart:nth-child(3) { 
-    font-size: 55px; 
-    left: 75%; 
-    top: 20%; 
-    animation-duration: 25s; 
-    animation-delay: -10s; 
-    color: #ff1493;
-    opacity: 0.35;
-}
-.heart:nth-child(4) { 
-    font-size: 35px; 
-    left: 85%; 
-    top: 70%; 
-    animation-duration: 20s; 
-    animation-delay: -3s; 
-    color: #ff69b4;
-    opacity: 0.45;
-}
-.heart:nth-child(5) { 
-    font-size: 20px; 
-    left: 45%; 
-    top: 5%; 
-    animation-duration: 16s; 
-    animation-delay: -8s; 
-    color: #ff2a85;
-    opacity: 0.55;
-}
-.heart:nth-child(6) { 
-    font-size: 45px; 
-    left: 55%; 
-    top: 80%; 
-    animation-duration: 24s; 
-    animation-delay: -12s; 
-    color: #ff1493;
-    opacity: 0.4;
-}
-.heart:nth-child(7) { 
-    font-size: 18px; 
-    left: 30%; 
-    top: 40%; 
-    animation-duration: 19s; 
-    animation-delay: -6s; 
-    color: #ff69b4;
-    opacity: 0.6;
-}
-.heart:nth-child(8) { 
-    font-size: 38px; 
-    left: 90%; 
-    top: 45%; 
-    animation-duration: 21s; 
-    animation-delay: -15s; 
-    color: #ff2a85;
-    opacity: 0.4;
-}
-.heart:nth-child(9) { 
-    font-size: 28px; 
-    left: 25%; 
-    top: 85%; 
-    animation-duration: 23s; 
-    animation-delay: -7s; 
-    color: #ff69b4;
-    opacity: 0.5;
-}
-.heart:nth-child(10) { 
-    font-size: 50px; 
-    left: 65%; 
-    top: 35%; 
-    animation-duration: 26s; 
-    animation-delay: -14s; 
-    color: #ff1493;
-    opacity: 0.35;
-}
-.heart:nth-child(11) { 
-    font-size: 22px; 
-    left: 10%; 
-    top: 75%; 
-    animation-duration: 17s; 
-    animation-delay: -4s; 
-    color: #ff2a85;
-    opacity: 0.55;
-}
-.heart:nth-child(12) { 
-    font-size: 32px; 
-    left: 50%; 
-    top: 50%; 
-    animation-duration: 20s; 
-    animation-delay: -9s; 
-    color: #ff69b4;
-    opacity: 0.45;
-}
+.heart:nth-child(1) { font-size: 40px; left: 5%; top: 10%; animation-duration: 18s; animation-delay: 0s; color: #ff2a85; opacity: 0.4; }
+.heart:nth-child(2) { font-size: 25px; left: 15%; top: 60%; animation-duration: 22s; animation-delay: -5s; color: #ff69b4; opacity: 0.5; }
+.heart:nth-child(3) { font-size: 55px; left: 75%; top: 20%; animation-duration: 25s; animation-delay: -10s; color: #ff1493; opacity: 0.35; }
+.heart:nth-child(4) { font-size: 35px; left: 85%; top: 70%; animation-duration: 20s; animation-delay: -3s; color: #ff69b4; opacity: 0.45; }
+.heart:nth-child(5) { font-size: 20px; left: 45%; top: 5%; animation-duration: 16s; animation-delay: -8s; color: #ff2a85; opacity: 0.55; }
+.heart:nth-child(6) { font-size: 45px; left: 55%; top: 80%; animation-duration: 24s; animation-delay: -12s; color: #ff1493; opacity: 0.4; }
+.heart:nth-child(7) { font-size: 18px; left: 30%; top: 40%; animation-duration: 19s; animation-delay: -6s; color: #ff69b4; opacity: 0.6; }
+.heart:nth-child(8) { font-size: 38px; left: 90%; top: 45%; animation-duration: 21s; animation-delay: -15s; color: #ff2a85; opacity: 0.4; }
+.heart:nth-child(9) { font-size: 28px; left: 25%; top: 85%; animation-duration: 23s; animation-delay: -7s; color: #ff69b4; opacity: 0.5; }
+.heart:nth-child(10) { font-size: 50px; left: 65%; top: 35%; animation-duration: 26s; animation-delay: -14s; color: #ff1493; opacity: 0.35; }
+.heart:nth-child(11) { font-size: 22px; left: 10%; top: 75%; animation-duration: 17s; animation-delay: -4s; color: #ff2a85; opacity: 0.55; }
+.heart:nth-child(12) { font-size: 32px; left: 50%; top: 50%; animation-duration: 20s; animation-delay: -9s; color: #ff69b4; opacity: 0.45; }
 
 @keyframes floatHeart {
-    0% { 
-        transform: translate(0, 0) rotate(0deg) scale(1); 
-        opacity: 0.3;
-    }
-    25% { 
-        transform: translate(30px, -40px) rotate(15deg) scale(1.1); 
-        opacity: 0.5;
-    }
-    50% { 
-        transform: translate(-20px, -80px) rotate(-10deg) scale(0.95); 
-        opacity: 0.4;
-    }
-    75% { 
-        transform: translate(40px, -40px) rotate(20deg) scale(1.05); 
-        opacity: 0.5;
-    }
-    100% { 
-        transform: translate(0, 0) rotate(0deg) scale(1); 
-        opacity: 0.3;
-    }
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
+    25% { transform: translate(30px, -40px) rotate(15deg) scale(1.1); opacity: 0.5; }
+    50% { transform: translate(-20px, -80px) rotate(-10deg) scale(0.95); opacity: 0.4; }
+    75% { transform: translate(40px, -40px) rotate(20deg) scale(1.05); opacity: 0.5; }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
 }
 
 @media (max-width: 768px) {
-    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { 
-        font-size: 25px; 
-    }
-    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { 
-        font-size: 18px; 
-    }
-    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { 
-        font-size: 14px; 
-    }
+    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { font-size: 25px; }
+    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { font-size: 18px; }
+    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { font-size: 14px; }
 }
 
 @media (max-width: 480px) {
-    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { 
-        font-size: 20px; 
-    }
-    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { 
-        font-size: 15px; 
-    }
-    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { 
-        font-size: 12px; 
-    }
+    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { font-size: 20px; }
+    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { font-size: 15px; }
+    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { font-size: 12px; }
 }
 
 /* ==========================================
-   INTRO DE BIENVENIDA CON LOGO Y TEXTO
-   FADE OUT MUY SUAVE (2.5 segundos)
+   INTRO (SOLO LOGO CON LATIDOS + CORAZONES DE FONDO)
+   FADE OUT MUY SUAVE DE 2.5s
    ========================================== */
 .intro-screen {
     position: fixed;
@@ -218,18 +95,15 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* FADE OUT MUY LARGO Y SUAVE */
     transition: opacity 2.5s ease-in-out, visibility 2.5s ease-in-out;
 }
 
-/* Cuando se agrega la clase hidden, se desvanece MUY suavemente */
 .intro-screen.hidden { 
     opacity: 0; 
     visibility: hidden; 
     pointer-events: none; 
 }
 
-/* Contenedor de corazones grandes del intro */
 .intro-hearts-bg {
     position: absolute;
     width: 100%;
@@ -238,7 +112,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     z-index: 1;
 }
 
-/* Corazones grandes y transparentes como los círculos anteriores */
 .intro-heart {
     position: absolute;
     border-radius: 50%;
@@ -256,95 +129,18 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     opacity: 0.3;
 }
 
-/* 6 corazones grandes en diferentes posiciones */
-.intro-heart:nth-child(1) {
-    width: 350px;
-    height: 350px;
-    top: -120px;
-    left: -120px;
-    background: rgba(255, 42, 133, 0.08);
-    border: 3px solid rgba(255, 42, 133, 0.15);
-    font-size: 200px;
-    color: #ff2a85;
-    animation-duration: 10s;
-    animation-delay: 0s;
-}
-
-.intro-heart:nth-child(2) {
-    width: 300px;
-    height: 300px;
-    bottom: -100px;
-    right: -100px;
-    background: rgba(255, 105, 180, 0.08);
-    border: 3px solid rgba(255, 105, 180, 0.15);
-    font-size: 180px;
-    color: #ff69b4;
-    animation-duration: 12s;
-    animation-delay: -2s;
-}
-
-.intro-heart:nth-child(3) {
-    width: 250px;
-    height: 250px;
-    top: 50%;
-    left: -80px;
-    background: rgba(255, 20, 147, 0.08);
-    border: 3px solid rgba(255, 20, 147, 0.15);
-    font-size: 150px;
-    color: #ff1493;
-    animation-duration: 11s;
-    animation-delay: -4s;
-}
-
-.intro-heart:nth-child(4) {
-    width: 320px;
-    height: 320px;
-    bottom: 10%;
-    right: 5%;
-    background: rgba(155, 77, 202, 0.08);
-    border: 3px solid rgba(155, 77, 202, 0.15);
-    font-size: 190px;
-    color: #9b4dca;
-    animation-duration: 9s;
-    animation-delay: -6s;
-}
-
-.intro-heart:nth-child(5) {
-    width: 220px;
-    height: 220px;
-    top: 15%;
-    right: 10%;
-    background: rgba(255, 105, 180, 0.08);
-    border: 3px solid rgba(255, 105, 180, 0.15);
-    font-size: 130px;
-    color: #ff69b4;
-    animation-duration: 13s;
-    animation-delay: -3s;
-}
-
-.intro-heart:nth-child(6) {
-    width: 280px;
-    height: 280px;
-    bottom: 25%;
-    left: 10%;
-    background: rgba(255, 42, 133, 0.08);
-    border: 3px solid rgba(255, 42, 133, 0.15);
-    font-size: 170px;
-    color: #ff2a85;
-    animation-duration: 10s;
-    animation-delay: -5s;
-}
+.intro-heart:nth-child(1) { width: 350px; height: 350px; top: -120px; left: -120px; background: rgba(255, 42, 133, 0.08); border: 3px solid rgba(255, 42, 133, 0.15); font-size: 200px; color: #ff2a85; animation-duration: 10s; }
+.intro-heart:nth-child(2) { width: 300px; height: 300px; bottom: -100px; right: -100px; background: rgba(255, 105, 180, 0.08); border: 3px solid rgba(255, 105, 180, 0.15); font-size: 180px; color: #ff69b4; animation-duration: 12s; animation-delay: -2s; }
+.intro-heart:nth-child(3) { width: 250px; height: 250px; top: 50%; left: -80px; background: rgba(255, 20, 147, 0.08); border: 3px solid rgba(255, 20, 147, 0.15); font-size: 150px; color: #ff1493; animation-duration: 11s; animation-delay: -4s; }
+.intro-heart:nth-child(4) { width: 320px; height: 320px; bottom: 10%; right: 5%; background: rgba(155, 77, 202, 0.08); border: 3px solid rgba(155, 77, 202, 0.15); font-size: 190px; color: #9b4dca; animation-duration: 9s; animation-delay: -6s; }
+.intro-heart:nth-child(5) { width: 220px; height: 220px; top: 15%; right: 10%; background: rgba(255, 105, 180, 0.08); border: 3px solid rgba(255, 105, 180, 0.15); font-size: 130px; color: #ff69b4; animation-duration: 13s; animation-delay: -3s; }
+.intro-heart:nth-child(6) { width: 280px; height: 280px; bottom: 25%; left: 10%; background: rgba(255, 42, 133, 0.08); border: 3px solid rgba(255, 42, 133, 0.15); font-size: 170px; color: #ff2a85; animation-duration: 10s; animation-delay: -5s; }
 
 @keyframes floatIntroHeart {
-    0%, 100% { 
-        transform: translate(0, 0) scale(1); 
-    }
-    50% { 
-        transform: translate(30px, -30px) scale(1.1); 
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
 }
 
-/* Contenido del intro (logo + texto) */
 .intro-content { 
     position: relative; 
     z-index: 10; 
@@ -354,22 +150,19 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 30px 40px;
-    max-width: 900px;
+    padding: 20px;
 }
 
-/* Logo más pequeño para dar espacio al texto */
 .intro-logo-img {
-    width: 200px;
+    width: 280px;
     height: auto;
-    max-width: 50vw;
-    max-height: 30vh;
+    max-width: 70vw;
+    max-height: 70vh;
     opacity: 0;
     transform: scale(0.7);
     animation: logoAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards, logoHeartbeat 1.5s ease-in-out 1.5s infinite;
     filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
     object-fit: contain;
-    margin-bottom: 20px;
 }
 
 @keyframes logoAppear {
@@ -377,54 +170,56 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Animación de latido de corazón para el logo */
 @keyframes logoHeartbeat {
-    0%, 100% { 
-        transform: scale(1); 
-        filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
-    }
-    15% { 
-        transform: scale(1.08); 
-        filter: drop-shadow(0 15px 40px rgba(255, 42, 133, 0.5));
-    }
-    30% { 
-        transform: scale(1); 
-        filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
-    }
-    45% { 
-        transform: scale(1.05); 
-        filter: drop-shadow(0 12px 35px rgba(255, 42, 133, 0.4));
-    }
-    60% { 
-        transform: scale(1); 
-        filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
-    }
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3)); }
+    15% { transform: scale(1.08); filter: drop-shadow(0 15px 40px rgba(255, 42, 133, 0.5)); }
+    30% { transform: scale(1); filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3)); }
+    45% { transform: scale(1.05); filter: drop-shadow(0 12px 35px rgba(255, 42, 133, 0.4)); }
+    60% { transform: scale(1); filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3)); }
 }
 
-/* Contenedor del texto de bienvenida */
-.intro-text {
-    opacity: 0;
-    animation: textFadeIn 1.5s ease-out 1s forwards;
+/* ==========================================
+   SECCIÓN DE BIENVENIDA (PRIMERA SECCIÓN DE LA PÁGINA)
+   ========================================== */
+.welcome-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff5f8 0%, #f0e6f6 50%, #e8d5f0 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-logo {
+    width: 200px;
+    height: auto;
+    max-width: 50vw;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
+    animation: logoHeartbeat 1.5s ease-in-out infinite;
+}
+
+.welcome-text {
     max-width: 700px;
 }
 
-@keyframes textFadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Título de bienvenida */
-.intro-title {
+.welcome-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     font-weight: 900;
     color: var(--text-dark);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     line-height: 1.2;
 }
 
-.intro-title .highlight {
+.welcome-title .highlight {
     background: var(--gradient-pink-purple);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -432,38 +227,35 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     font-style: italic;
 }
 
-/* Párrafos del intro */
-.intro-paragraph {
-    font-size: 1rem;
+.welcome-paragraph {
+    font-size: 1.05rem;
     color: var(--text-gray);
-    line-height: 1.6;
-    margin-bottom: 12px;
+    line-height: 1.7;
+    margin-bottom: 15px;
     font-weight: 400;
 }
 
-/* Frase de agradecimiento destacada */
-.intro-thanks {
+.welcome-thanks {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--primary-pink);
-    margin: 20px 0;
+    margin: 25px 0;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(255, 42, 133, 0.2);
 }
 
-/* Frase final (cita) */
-.intro-quote {
+.welcome-quote {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--primary-purple);
     font-style: italic;
-    margin-top: 15px;
-    line-height: 1.5;
+    margin-top: 20px;
+    line-height: 1.6;
     font-weight: 600;
 }
 
 /* ==========================================
-   LOGO FLOTANTE (esquina superior izquierda)
+   LOGO FLOTANTE
    ========================================== */
 .logo-float {
     position: fixed;
@@ -477,12 +269,10 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     cursor: pointer;
 }
 
-.logo-float:hover {
-    transform: scale(1.1);
-}
+.logo-float:hover { transform: scale(1.1); }
 
 /* ==========================================
-   BOTÓN HAMBURGUESA FLOTANTE (esquina superior derecha)
+   BOTÓN HAMBURGUESA FLOTANTE
    ========================================== */
 .hamburger-float {
     position: fixed;
@@ -518,17 +308,9 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     transform-origin: center;
 }
 
-.hamburger-float.active .hamburger-line:nth-child(1) {
-    transform: translateY(10.5px) rotate(45deg);
-}
-
-.hamburger-float.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-float.active .hamburger-line:nth-child(3) {
-    transform: translateY(-10.5px) rotate(-45deg);
-}
+.hamburger-float.active .hamburger-line:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+.hamburger-float.active .hamburger-line:nth-child(2) { opacity: 0; }
+.hamburger-float.active .hamburger-line:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
 
 /* ==========================================
    MENÚ LATERAL DESLIZANTE
@@ -547,16 +329,8 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     overflow-y: auto;
 }
 
-.side-nav.active {
-    right: 0;
-}
-
-.side-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
+.side-nav.active { right: 0; }
+.side-nav ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
 
 .nav-link {
     text-decoration: none;
@@ -569,18 +343,9 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-    background: rgba(123, 45, 142, 0.08);
-    color: var(--primary-purple);
-}
+.nav-link:hover { background: rgba(123, 45, 142, 0.08); color: var(--primary-purple); }
+.nav-link.active { background: rgba(123, 45, 142, 0.1); color: var(--primary-purple); font-weight: 600; }
 
-.nav-link.active {
-    background: rgba(123, 45, 142, 0.1);
-    color: var(--primary-purple);
-    font-weight: 600;
-}
-
-/* Overlay para cerrar menú */
 .nav-overlay {
     display: none;
     position: fixed;
@@ -595,10 +360,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     transition: opacity 0.3s ease;
 }
 
-.nav-overlay.active {
-    display: block;
-    opacity: 1;
-}
+.nav-overlay.active { display: block; opacity: 1; }
 
 /* ==========================================
    GLASSMORPHISM BASE
@@ -645,10 +407,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     font-family: 'Poppins', sans-serif; 
     font-size: 1rem; 
 }
-.btn-cta-primary:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 15px 35px rgba(123, 45, 142, 0.4); 
-}
+.btn-cta-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(123, 45, 142, 0.4); }
 .btn-cta-secondary { 
     padding: 15px 30px; 
     background: transparent; 
@@ -659,10 +418,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     border: 2px solid var(--primary-purple); 
     transition: all 0.3s; 
 }
-.btn-cta-secondary:hover { 
-    background: var(--primary-purple); 
-    color: white; 
-}
+.btn-cta-secondary:hover { background: var(--primary-purple); color: white; }
 .hero-stats { display: flex; gap: 40px; }
 .stat { display: flex; flex-direction: column; }
 .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--primary-purple); }
@@ -974,10 +730,10 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .testimonials-grid { grid-template-columns: 1fr; }
     
-    .intro-title { font-size: 1.8rem; }
-    .intro-paragraph { font-size: 0.95rem; }
-    .intro-thanks { font-size: 1.5rem; }
-    .intro-quote { font-size: 1rem; }
+    .welcome-title { font-size: 1.8rem; }
+    .welcome-paragraph { font-size: 0.95rem; }
+    .welcome-thanks { font-size: 1.5rem; }
+    .welcome-quote { font-size: 1rem; }
 }
 
 /* ==========================================
@@ -986,24 +742,9 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 @media (max-width: 768px) {
     .container { padding: 0 20px; }
     
-    .logo-float {
-        width: 50px;
-        top: 15px;
-        left: 15px;
-    }
-    
-    .hamburger-float {
-        top: 20px;
-        right: 15px;
-        width: 36px;
-        height: 26px;
-        padding: 5px 7px;
-    }
-    
-    .side-nav {
-        width: 260px;
-        padding: 90px 25px 25px;
-    }
+    .logo-float { width: 50px; top: 15px; left: 15px; }
+    .hamburger-float { top: 20px; right: 15px; width: 36px; height: 26px; padding: 5px 7px; }
+    .side-nav { width: 260px; padding: 90px 25px 25px; }
     
     .hero-section { min-height: auto; padding: 40px 0; }
     .hero-title { font-size: 2rem; margin-bottom: 15px; }
@@ -1043,22 +784,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .hero-title-banner { font-size: 2rem; }
     .hero-subtitle-banner { font-size: 1rem; }
     
-    /* Intro responsive */
-    .intro-content {
-        padding: 20px 25px;
-    }
-    
-    .intro-logo-img { 
-        width: 160px; 
-        max-width: 45vw;
-        max-height: 25vh;
-        margin-bottom: 15px;
-    }
-    
-    .intro-title { font-size: 1.5rem; margin-bottom: 15px; }
-    .intro-paragraph { font-size: 0.9rem; margin-bottom: 10px; }
-    .intro-thanks { font-size: 1.3rem; margin: 15px 0; }
-    .intro-quote { font-size: 0.95rem; }
+    .intro-logo-img { width: 240px; max-width: 65vw; max-height: 60vh; }
     
     .intro-heart:nth-child(1) { width: 250px; height: 250px; font-size: 150px; }
     .intro-heart:nth-child(2) { width: 220px; height: 220px; font-size: 130px; }
@@ -1067,13 +793,16 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .intro-heart:nth-child(5) { width: 160px; height: 160px; font-size: 100px; }
     .intro-heart:nth-child(6) { width: 200px; height: 200px; font-size: 120px; }
     
-    .whatsapp-float { 
-        width: 55px; 
-        height: 55px; 
-        bottom: 90px; 
-        right: 20px; 
-    }
+    .whatsapp-float { width: 55px; height: 55px; bottom: 90px; right: 20px; }
     .whatsapp-float svg { width: 30px; height: 30px; }
+    
+    /* Welcome responsive */
+    .welcome-section { padding: 60px 0; }
+    .welcome-logo { width: 160px; margin-bottom: 25px; }
+    .welcome-title { font-size: 1.5rem; margin-bottom: 20px; }
+    .welcome-paragraph { font-size: 0.9rem; margin-bottom: 12px; }
+    .welcome-thanks { font-size: 1.3rem; margin: 20px 0; }
+    .welcome-quote { font-size: 0.95rem; }
 }
 
 /* ==========================================
@@ -1082,33 +811,11 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 @media (max-width: 600px) {
     .container { padding: 0 15px; }
     
-    .logo-float {
-        width: 45px;
-        top: 12px;
-        left: 12px;
-    }
-    
-    .hamburger-float {
-        top: 17px;
-        right: 12px;
-        width: 34px;
-        height: 24px;
-        padding: 4px 6px;
-    }
-    
-    .hamburger-line {
-        height: 2.5px;
-    }
-    
-    .side-nav {
-        width: 240px;
-        padding: 80px 20px 20px;
-    }
-    
-    .nav-link {
-        font-size: 0.95rem;
-        padding: 10px 14px;
-    }
+    .logo-float { width: 45px; top: 12px; left: 12px; }
+    .hamburger-float { top: 17px; right: 12px; width: 34px; height: 24px; padding: 4px 6px; }
+    .hamburger-line { height: 2.5px; }
+    .side-nav { width: 240px; padding: 80px 20px 20px; }
+    .nav-link { font-size: 0.95rem; padding: 10px 14px; }
     
     .hero-title { font-size: 1.7rem; }
     .hero-subtitle { font-size: 0.9rem; }
@@ -1163,12 +870,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     
     .footer-content { flex-direction: column; gap: 10px; text-align: center; font-size: 0.85rem; }
     
-    .whatsapp-float { 
-        width: 50px; 
-        height: 50px; 
-        bottom: 80px; 
-        right: 15px; 
-    }
+    .whatsapp-float { width: 50px; height: 50px; bottom: 80px; right: 15px; }
     .whatsapp-float svg { width: 28px; height: 28px; }
     
     .modal { padding: 10px; }
@@ -1186,22 +888,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .category-actions { width: 100%; justify-content: flex-end; margin-top: 5px; }
     .category-subtitle { display: none; }
     
-    /* Intro móvil */
-    .intro-content {
-        padding: 15px 20px;
-    }
-    
-    .intro-logo-img { 
-        width: 130px; 
-        max-width: 40vw;
-        max-height: 20vh;
-        margin-bottom: 12px;
-    }
-    
-    .intro-title { font-size: 1.3rem; margin-bottom: 12px; }
-    .intro-paragraph { font-size: 0.85rem; margin-bottom: 8px; }
-    .intro-thanks { font-size: 1.1rem; margin: 12px 0; }
-    .intro-quote { font-size: 0.85rem; }
+    .intro-logo-img { width: 200px; max-width: 60vw; max-height: 50vh; }
     
     .intro-heart:nth-child(1) { width: 180px; height: 180px; font-size: 110px; }
     .intro-heart:nth-child(2) { width: 160px; height: 160px; font-size: 100px; }
@@ -1209,6 +896,14 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .intro-heart:nth-child(4) { width: 170px; height: 170px; font-size: 105px; }
     .intro-heart:nth-child(5) { width: 110px; height: 110px; font-size: 70px; }
     .intro-heart:nth-child(6) { width: 150px; height: 150px; font-size: 90px; }
+    
+    /* Welcome móvil */
+    .welcome-section { padding: 50px 0; }
+    .welcome-logo { width: 130px; margin-bottom: 20px; }
+    .welcome-title { font-size: 1.3rem; margin-bottom: 15px; }
+    .welcome-paragraph { font-size: 0.85rem; margin-bottom: 10px; }
+    .welcome-thanks { font-size: 1.1rem; margin: 15px 0; }
+    .welcome-quote { font-size: 0.85rem; }
 }
 
 /* ==========================================
@@ -1217,29 +912,10 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 @media (max-width: 480px) {
     .container { padding: 0 12px; }
     
-    .logo-float {
-        width: 40px;
-        top: 10px;
-        left: 10px;
-    }
-    
-    .hamburger-float {
-        top: 14px;
-        right: 10px;
-        width: 32px;
-        height: 22px;
-        padding: 4px 5px;
-    }
-    
-    .side-nav {
-        width: 220px;
-        padding: 70px 18px 18px;
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 9px 12px;
-    }
+    .logo-float { width: 40px; top: 10px; left: 10px; }
+    .hamburger-float { top: 14px; right: 10px; width: 32px; height: 22px; padding: 4px 5px; }
+    .side-nav { width: 220px; padding: 70px 18px 18px; }
+    .nav-link { font-size: 0.9rem; padding: 9px 12px; }
     
     .hero-title { font-size: 1.5rem; }
     .hero-subtitle { font-size: 0.85rem; }
@@ -1255,22 +931,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .product-grid { grid-template-columns: 1fr; }
     .hero-title-banner { font-size: 1.3rem; }
     
-    /* Intro móvil pequeño */
-    .intro-content {
-        padding: 12px 15px;
-    }
-    
-    .intro-logo-img { 
-        width: 110px; 
-        max-width: 38vw;
-        max-height: 18vh;
-        margin-bottom: 10px;
-    }
-    
-    .intro-title { font-size: 1.15rem; margin-bottom: 10px; }
-    .intro-paragraph { font-size: 0.8rem; margin-bottom: 7px; }
-    .intro-thanks { font-size: 1rem; margin: 10px 0; }
-    .intro-quote { font-size: 0.8rem; }
+    .intro-logo-img { width: 180px; max-width: 55vw; max-height: 45vh; }
     
     .intro-heart:nth-child(1) { width: 140px; height: 140px; font-size: 85px; }
     .intro-heart:nth-child(2) { width: 120px; height: 120px; font-size: 75px; }
@@ -1286,11 +947,14 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .btn-primary { padding: 12px; font-size: 0.9rem; }
     .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; font-size: 0.9rem; }
     
-    .whatsapp-float { 
-        width: 48px; 
-        height: 48px; 
-        bottom: 70px; 
-        right: 12px; 
-    }
+    .whatsapp-float { width: 48px; height: 48px; bottom: 70px; right: 12px; }
     .whatsapp-float svg { width: 26px; height: 26px; }
+    
+    /* Welcome móvil pequeño */
+    .welcome-section { padding: 40px 0; }
+    .welcome-logo { width: 110px; margin-bottom: 15px; }
+    .welcome-title { font-size: 1.15rem; margin-bottom: 12px; }
+    .welcome-paragraph { font-size: 0.8rem; margin-bottom: 8px; }
+    .welcome-thanks { font-size: 1rem; margin: 12px 0; }
+    .welcome-quote { font-size: 0.8rem; }
 }

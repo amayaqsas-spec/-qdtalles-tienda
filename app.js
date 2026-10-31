@@ -151,27 +151,28 @@ const adminStarRating = document.getElementById('adminStarRating');
 const adminRatingValue = document.getElementById('adminRatingValue');
 
 // ==========================================
-// 7. MENÚ HAMBURGUESA Y NAVEGACIÓN MÓVIL
+// 7. MENÚ HAMBURGUESA FLOTANTE Y NAVEGACIÓN
 // ==========================================
 const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mainNav = document.getElementById('mainNav');
+const sideNav = document.getElementById('sideNav');
 const navOverlay = document.getElementById('navOverlay');
 const navLinks = document.querySelectorAll('.nav-link');
+const logoFloat = document.getElementById('logoFloat');
 
 // Toggle menú hamburguesa
 function toggleMenu() {
-    if (!hamburgerBtn || !mainNav || !navOverlay) return;
+    if (!hamburgerBtn || !sideNav || !navOverlay) return;
     hamburgerBtn.classList.toggle('active');
-    mainNav.classList.toggle('active');
+    sideNav.classList.toggle('active');
     navOverlay.classList.toggle('active');
-    document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    document.body.style.overflow = sideNav.classList.contains('active') ? 'hidden' : '';
 }
 
 // Cerrar menú
 function closeMenu() {
-    if (!hamburgerBtn || !mainNav || !navOverlay) return;
+    if (!hamburgerBtn || !sideNav || !navOverlay) return;
     hamburgerBtn.classList.remove('active');
-    mainNav.classList.remove('active');
+    sideNav.classList.remove('active');
     navOverlay.classList.remove('active');
     document.body.style.overflow = '';
 }
@@ -193,20 +194,15 @@ navLinks.forEach(link => {
 
 // Cerrar menú con tecla Escape
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && mainNav && mainNav.classList.contains('active')) {
+    if (e.key === 'Escape' && sideNav && sideNav.classList.contains('active')) {
         closeMenu();
     }
 });
 
-// Header con sombra al hacer scroll
-const header = document.querySelector('.header');
-if (header) {
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+// Logo flotante - clic para ir al inicio
+if (logoFloat) {
+    logoFloat.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
@@ -216,7 +212,6 @@ window.addEventListener('scroll', function() {
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (window.scrollY >= (sectionTop - 200)) {
             current = section.getAttribute('id');
         }
@@ -963,7 +958,7 @@ function renderProducts() {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
-                <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250/fff5f8/ff2a85?text=Sin+Imagen'">
+                <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250/fff5f8/7b2d8e?text=Sin+Imagen'">
                 <div class="product-info">
                     <span class="product-category">${product.category}</span>
                     <h3 class="product-title">${product.title}</h3>

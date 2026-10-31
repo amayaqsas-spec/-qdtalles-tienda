@@ -38,36 +38,30 @@
         <div class="bubble"></div>
     </div>
 
-    <!-- Header Rediseñado -->
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo">
-                <img src="logo.png" alt="+Q'Dtalles" class="logo-img">
-            </div>
-            
-            <!-- Botón Hamburguesa (solo móvil) -->
-            <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            
-            <!-- Navegación -->
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#tienda" class="nav-link">Tienda</a></li>
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
-                    <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-        
-        <!-- Overlay para cerrar menú al tocar fuera -->
-        <div class="nav-overlay" id="navOverlay"></div>
-    </header>
+    <!-- LOGO FLOTANTE (esquina superior izquierda) -->
+    <img src="logo.png" alt="+Q'Dtalles" class="logo-float" id="logoFloat">
+
+    <!-- BOTÓN HAMBURGUESA FLOTANTE (esquina superior derecha) -->
+    <button class="hamburger-float" id="hamburgerBtn" aria-label="Abrir menú">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <!-- MENÚ LATERAL DESLIZANTE -->
+    <nav class="side-nav" id="sideNav">
+        <ul>
+            <li><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="#tienda" class="nav-link">Tienda</a></li>
+            <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#proceso" class="nav-link">Proceso</a></li>
+            <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay para cerrar menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- HERO SECTION -->
     <section id="inicio" class="hero-section">

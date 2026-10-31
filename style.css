@@ -25,9 +25,9 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 .hidden { display: none !important; }
 
 /* ==========================================
-   BURBUJAS FLOTANTES DE FONDO
+   CORAZONES FLOTANTES DE FONDO
    ========================================== */
-.floating-bubbles {
+.floating-hearts {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,29 +38,168 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     overflow: hidden;
 }
 
-.bubble {
+.heart {
     position: absolute;
-    border-radius: 50%;
-    background: rgba(123, 45, 142, 0.06);
-    border: 1px solid rgba(123, 45, 142, 0.1);
-    animation: floatBubble linear infinite;
+    opacity: 0.5;
+    animation: floatHeart linear infinite;
+    color: #ff2a85;
+    filter: drop-shadow(0 2px 4px rgba(255, 42, 133, 0.2));
 }
 
-.bubble:nth-child(1) { width: 180px; height: 180px; left: 5%; top: 10%; animation-duration: 18s; animation-delay: 0s; }
-.bubble:nth-child(2) { width: 120px; height: 120px; left: 15%; top: 60%; animation-duration: 22s; animation-delay: -5s; }
-.bubble:nth-child(3) { width: 220px; height: 220px; left: 75%; top: 20%; animation-duration: 25s; animation-delay: -10s; }
-.bubble:nth-child(4) { width: 150px; height: 150px; left: 85%; top: 70%; animation-duration: 20s; animation-delay: -3s; }
-.bubble:nth-child(5) { width: 100px; height: 100px; left: 45%; top: 5%; animation-duration: 16s; animation-delay: -8s; }
-.bubble:nth-child(6) { width: 200px; height: 200px; left: 55%; top: 80%; animation-duration: 24s; animation-delay: -12s; }
-.bubble:nth-child(7) { width: 90px; height: 90px; left: 30%; top: 40%; animation-duration: 19s; animation-delay: -6s; }
-.bubble:nth-child(8) { width: 160px; height: 160px; left: 90%; top: 45%; animation-duration: 21s; animation-delay: -15s; }
+.heart:nth-child(1) { 
+    font-size: 40px; 
+    left: 5%; 
+    top: 10%; 
+    animation-duration: 18s; 
+    animation-delay: 0s; 
+    color: #ff2a85;
+    opacity: 0.4;
+}
+.heart:nth-child(2) { 
+    font-size: 25px; 
+    left: 15%; 
+    top: 60%; 
+    animation-duration: 22s; 
+    animation-delay: -5s; 
+    color: #ff69b4;
+    opacity: 0.5;
+}
+.heart:nth-child(3) { 
+    font-size: 55px; 
+    left: 75%; 
+    top: 20%; 
+    animation-duration: 25s; 
+    animation-delay: -10s; 
+    color: #ff1493;
+    opacity: 0.35;
+}
+.heart:nth-child(4) { 
+    font-size: 35px; 
+    left: 85%; 
+    top: 70%; 
+    animation-duration: 20s; 
+    animation-delay: -3s; 
+    color: #ff69b4;
+    opacity: 0.45;
+}
+.heart:nth-child(5) { 
+    font-size: 20px; 
+    left: 45%; 
+    top: 5%; 
+    animation-duration: 16s; 
+    animation-delay: -8s; 
+    color: #ff2a85;
+    opacity: 0.55;
+}
+.heart:nth-child(6) { 
+    font-size: 45px; 
+    left: 55%; 
+    top: 80%; 
+    animation-duration: 24s; 
+    animation-delay: -12s; 
+    color: #ff1493;
+    opacity: 0.4;
+}
+.heart:nth-child(7) { 
+    font-size: 18px; 
+    left: 30%; 
+    top: 40%; 
+    animation-duration: 19s; 
+    animation-delay: -6s; 
+    color: #ff69b4;
+    opacity: 0.6;
+}
+.heart:nth-child(8) { 
+    font-size: 38px; 
+    left: 90%; 
+    top: 45%; 
+    animation-duration: 21s; 
+    animation-delay: -15s; 
+    color: #ff2a85;
+    opacity: 0.4;
+}
+.heart:nth-child(9) { 
+    font-size: 28px; 
+    left: 25%; 
+    top: 85%; 
+    animation-duration: 23s; 
+    animation-delay: -7s; 
+    color: #ff69b4;
+    opacity: 0.5;
+}
+.heart:nth-child(10) { 
+    font-size: 50px; 
+    left: 65%; 
+    top: 35%; 
+    animation-duration: 26s; 
+    animation-delay: -14s; 
+    color: #ff1493;
+    opacity: 0.35;
+}
+.heart:nth-child(11) { 
+    font-size: 22px; 
+    left: 10%; 
+    top: 75%; 
+    animation-duration: 17s; 
+    animation-delay: -4s; 
+    color: #ff2a85;
+    opacity: 0.55;
+}
+.heart:nth-child(12) { 
+    font-size: 32px; 
+    left: 50%; 
+    top: 50%; 
+    animation-duration: 20s; 
+    animation-delay: -9s; 
+    color: #ff69b4;
+    opacity: 0.45;
+}
 
-@keyframes floatBubble {
-    0% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -40px) scale(1.1); }
-    50% { transform: translate(-20px, -80px) scale(0.95); }
-    75% { transform: translate(40px, -40px) scale(1.05); }
-    100% { transform: translate(0, 0) scale(1); }
+@keyframes floatHeart {
+    0% { 
+        transform: translate(0, 0) rotate(0deg) scale(1); 
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translate(30px, -40px) rotate(15deg) scale(1.1); 
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translate(-20px, -80px) rotate(-10deg) scale(0.95); 
+        opacity: 0.4;
+    }
+    75% { 
+        transform: translate(40px, -40px) rotate(20deg) scale(1.05); 
+        opacity: 0.5;
+    }
+    100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1); 
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 768px) {
+    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { 
+        font-size: 25px; 
+    }
+    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { 
+        font-size: 18px; 
+    }
+    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { 
+        font-size: 14px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .heart:nth-child(1), .heart:nth-child(3), .heart:nth-child(6), .heart:nth-child(10) { 
+        font-size: 20px; 
+    }
+    .heart:nth-child(2), .heart:nth-child(4), .heart:nth-child(8), .heart:nth-child(12) { 
+        font-size: 15px; 
+    }
+    .heart:nth-child(5), .heart:nth-child(7), .heart:nth-child(9), .heart:nth-child(11) { 
+        font-size: 12px; 
+    }
 }
 
 /* ==========================================
@@ -728,11 +867,6 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         max-width: 65vw;
         max-height: 60vh;
     }
-    
-    /* Burbujas más pequeñas */
-    .bubble:nth-child(1), .bubble:nth-child(3), .bubble:nth-child(6) { width: 100px; height: 100px; }
-    .bubble:nth-child(2), .bubble:nth-child(4), .bubble:nth-child(8) { width: 70px; height: 70px; }
-    .bubble:nth-child(5), .bubble:nth-child(7) { width: 50px; height: 50px; }
     
     /* WhatsApp subido */
     .whatsapp-float { 

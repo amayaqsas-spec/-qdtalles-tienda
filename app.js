@@ -10,28 +10,25 @@ const firebaseConfig = {
     appId: "1:418041894729:web:70a243b7a033bbfe816c98"
 };
 
-// Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // ==========================================
-// 2. INTRO ANIMADO (TIEMPO EXTENDIDO + FADE OUT SUAVE)
+// 2. INTRO DE BIENVENIDA (12 segundos + fade out de 2.5s)
 // ==========================================
 function handleIntro() {
     const intro = document.getElementById('intro');
     if (!intro) return;
     
-    // Tiempo extendido a 8 segundos para apreciar los latidos
-    // Aparece en 0.3s + 1.2s = 1.5s
-    // Luego 4-5 latidos de 1.5s cada uno = ~7.5s total
+    // 12 segundos para que se lea el texto completo
+    // Luego fade out de 2.5 segundos (definido en CSS)
     setTimeout(() => {
-        // Agregar clase hidden que activa el fade out suave
         intro.classList.add('hidden');
-        // Esperar a que termine la transición de opacidad antes de ocultar
+        // Esperar a que termine el fade out de 2.5s antes de ocultar
         setTimeout(() => {
             intro.style.display = 'none';
-        }, 1500); // Mismo tiempo que la transición CSS
-    }, 8000);
+        }, 2500);
+    }, 12000);
 }
 
 // ==========================================
@@ -62,27 +59,9 @@ const DEFAULT_CATEGORIES = [
 ];
 
 const DEFAULT_TESTIMONIALS = [
-    {
-        name: 'María Rodríguez',
-        service: 'Recuerdos de boda',
-        text: 'Los recuerdos para la boda de mi hija quedaron HERMOSOS. Todos los invitados preguntaron dónde los habíamos hecho.',
-        rating: 5,
-        createdAt: Date.now() - 3000
-    },
-    {
-        name: 'Juan López',
-        service: 'Tazas personalizadas',
-        text: 'Pedí tazas personalizadas para el cumpleaños de mi mamá y lloró de emoción. El diseño quedó idéntico a lo que imaginé.',
-        rating: 5,
-        createdAt: Date.now() - 2000
-    },
-    {
-        name: 'Ana García',
-        service: 'Arreglo baby shower',
-        text: 'El arreglo de peluches para el baby shower fue lo más bonito de la fiesta. Atención increíble y entrega puntual.',
-        rating: 5,
-        createdAt: Date.now() - 1000
-    }
+    { name: 'María Rodríguez', service: 'Recuerdos de boda', text: 'Los recuerdos para la boda de mi hija quedaron HERMOSOS. Todos los invitados preguntaron dónde los habíamos hecho.', rating: 5, createdAt: Date.now() - 3000 },
+    { name: 'Juan López', service: 'Tazas personalizadas', text: 'Pedí tazas personalizadas para el cumpleaños de mi mamá y lloró de emoción. El diseño quedó idéntico a lo que imaginé.', rating: 5, createdAt: Date.now() - 2000 },
+    { name: 'Ana García', service: 'Arreglo baby shower', text: 'El arreglo de peluches para el baby shower fue lo más bonito de la fiesta. Atención increíble y entrega puntual.', rating: 5, createdAt: Date.now() - 1000 }
 ];
 
 // ==========================================
@@ -103,7 +82,6 @@ let shopConfig = { ...DEFAULT_CONFIG };
 let credentials = { ...DEFAULT_CREDENTIALS };
 let categories = [];
 let testimonials = [];
-
 let currentCategory = 'all';
 let isAnimating = false;
 let isAuthenticated = false;
@@ -119,7 +97,6 @@ const productForm = document.getElementById('productForm');
 const adminToggleBtn = document.getElementById('adminToggleBtn');
 const clearStorageBtn = document.getElementById('clearStorageBtn');
 const contactForm = document.getElementById('contactForm');
-
 const heroContent = document.getElementById('heroContent');
 const heroTitle = document.getElementById('heroTitle');
 const heroSubtitle = document.getElementById('heroSubtitle');
@@ -127,7 +104,6 @@ const heroImage = document.getElementById('heroImage');
 const whatsappFloat = document.getElementById('whatsappFloat');
 const contactMethods = document.getElementById('contactMethods');
 const contactSocial = document.getElementById('contactSocial');
-
 const loginScreen = document.getElementById('loginScreen');
 const adminPanel = document.getElementById('adminPanel');
 const loginForm = document.getElementById('loginForm');
@@ -142,7 +118,6 @@ const saveConfigBtn = document.getElementById('saveConfigBtn');
 const credentialsForm = document.getElementById('credentialsForm');
 const addCategoryForm = document.getElementById('addCategoryForm');
 const categoriesList = document.getElementById('categoriesList');
-
 const testimonialsGrid = document.getElementById('testimonialsGrid');
 const openTestimonialForm = document.getElementById('openTestimonialForm');
 const testimonialModal = document.getElementById('testimonialModal');
@@ -156,7 +131,7 @@ const adminStarRating = document.getElementById('adminStarRating');
 const adminRatingValue = document.getElementById('adminRatingValue');
 
 // ==========================================
-// 7. MENÚ HAMBURGUESA FLOTANTE Y NAVEGACIÓN
+// 7. MENÚ HAMBURGUESA Y NAVEGACIÓN
 // ==========================================
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sideNav = document.getElementById('sideNav');
@@ -212,7 +187,6 @@ window.addEventListener('scroll', function() {
             current = section.getAttribute('id');
         }
     });
-    
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -227,16 +201,13 @@ window.addEventListener('scroll', function() {
 function getCategoryData() {
     const data = { 'all': { title: 'Todas las Categorías', subtitle: 'Explora todas nuestras creaciones' } };
     categories.forEach(cat => {
-        data[cat.name] = { 
-            title: cat.name, 
-            subtitle: cat.subtitle || `Productos de ${cat.name}` 
-        };
+        data[cat.name] = { title: cat.name, subtitle: cat.subtitle || `Productos de ${cat.name}` };
     });
     return data;
 }
 
 // ==========================================
-// 9. CARGAR DATOS DESDE FIREBASE (TIEMPO REAL)
+// 9. CARGAR DATOS DESDE FIREBASE
 // ==========================================
 function loadFromFirebase() {
     db.collection('config').doc('shop').onSnapshot((doc) => {
@@ -267,11 +238,7 @@ function loadFromFirebase() {
             });
             batch.commit();
         } else {
-            categories = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            })).sort((a, b) => a.order - b.order);
-            
+            categories = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a, b) => a.order - b.order);
             renderSidebarCategories();
             updateProductCategorySelect();
             updateHeroIfCurrentCategory();
@@ -279,10 +246,7 @@ function loadFromFirebase() {
     });
 
     db.collection('products').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
-        products = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
+        products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderProducts();
     });
 
@@ -295,10 +259,7 @@ function loadFromFirebase() {
             });
             batch.commit();
         } else {
-            testimonials = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }));
+            testimonials = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             renderTestimonials();
             renderAdminTestimonials();
         }
@@ -306,7 +267,7 @@ function loadFromFirebase() {
 }
 
 // ==========================================
-// 10. SISTEMA DE AUTENTICACIÓN
+// 10. AUTENTICACIÓN
 // ==========================================
 function checkAuthStatus() {
     if (sessionStorage.getItem('qdtalles_auth') === 'true') {
@@ -316,11 +277,7 @@ function checkAuthStatus() {
 
 function openModal() {
     adminModal.style.display = 'flex';
-    if (isAuthenticated) {
-        showAdminPanel();
-    } else {
-        showLoginScreen();
-    }
+    if (isAuthenticated) { showAdminPanel(); } else { showLoginScreen(); }
 }
 
 function showLoginScreen() {
@@ -360,7 +317,6 @@ loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const user = loginUserInput.value.trim();
     const pass = loginPasswordInput.value;
-    
     if (user === credentials.username && pass === credentials.password) {
         isAuthenticated = true;
         sessionStorage.setItem('qdtalles_auth', 'true');
@@ -398,14 +354,13 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ==========================================
-// 11. TOGGLE PASSWORD (OJITO)
+// 11. TOGGLE PASSWORD
 // ==========================================
 function setupPasswordToggle(toggleBtn, inputId) {
     const input = document.getElementById(inputId);
     if (!input || !toggleBtn) return;
     const eyeOpen = toggleBtn.querySelector('.eye-open');
     const eyeClosed = toggleBtn.querySelector('.eye-closed');
-    
     toggleBtn.addEventListener('click', function(e) {
         e.preventDefault();
         if (input.type === 'password') {
@@ -421,14 +376,12 @@ function setupPasswordToggle(toggleBtn, inputId) {
 }
 
 setupPasswordToggle(document.getElementById('toggleLoginPassword'), 'loginPassword');
-
 document.querySelectorAll('.toggle-password[data-target]').forEach(btn => {
-    const targetId = btn.getAttribute('data-target');
-    setupPasswordToggle(btn, targetId);
+    setupPasswordToggle(btn, btn.getAttribute('data-target'));
 });
 
 // ==========================================
-// 12. TABS DE ADMINISTRACIÓN
+// 12. TABS
 // ==========================================
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabContents = {
@@ -449,21 +402,18 @@ tabBtns.forEach(btn => {
 });
 
 // ==========================================
-// 13. GESTIÓN DE CATEGORÍAS
+// 13. CATEGORÍAS
 // ==========================================
 function renderCategoriesList() {
     categoriesList.innerHTML = '';
-    
     if (categories.length === 0) {
         categoriesList.innerHTML = '<p style="text-align:center; color: var(--text-gray); padding: 20px;">Cargando categorías...</p>';
         return;
     }
-    
     categories.forEach((cat, index) => {
         const item = document.createElement('div');
         item.className = 'category-item';
         item.dataset.index = index;
-        
         item.innerHTML = `
             <span class="category-number">${index + 1}.</span>
             <span class="category-name">${cat.name}</span>
@@ -477,7 +427,6 @@ function renderCategoriesList() {
         `;
         categoriesList.appendChild(item);
     });
-    
     document.querySelectorAll('.category-item').forEach(item => {
         const index = parseInt(item.dataset.index);
         item.querySelector('.move-up').addEventListener('click', () => moveCategory(index, -1));
@@ -490,10 +439,8 @@ function renderCategoriesList() {
 async function moveCategory(index, direction) {
     const newIndex = index + direction;
     if (newIndex < 0 || newIndex >= categories.length) return;
-    
     const cat1 = categories[index];
     const cat2 = categories[newIndex];
-    
     await db.collection('categories').doc(cat1.id).update({ order: cat2.order });
     await db.collection('categories').doc(cat2.id).update({ order: cat1.order });
 }
@@ -503,19 +450,15 @@ async function editCategory(index) {
     const nameSpan = item.querySelector('.category-name');
     const subtitleSpan = item.querySelector('.category-subtitle');
     const actionsDiv = item.querySelector('.category-actions');
-    
     const cat = categories[index];
     const oldName = cat.name;
     const oldSubtitle = cat.subtitle || '';
-    
     item.classList.add('editing');
-    
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.className = 'category-name-input';
     nameInput.value = oldName;
     nameSpan.replaceWith(nameInput);
-    
     let subtitleInput;
     if (subtitleSpan) {
         subtitleInput = document.createElement('input');
@@ -536,35 +479,16 @@ async function editCategory(index) {
         subtitleInput.style.maxWidth = '200px';
         nameInput.insertAdjacentElement('afterend', subtitleInput);
     }
-    
-    actionsDiv.innerHTML = `
-        <button class="cat-btn save" title="Guardar">💾</button>
-        <button class="cat-btn cancel" title="Cancelar">❌</button>
-    `;
-    
+    actionsDiv.innerHTML = `<button class="cat-btn save" title="Guardar">💾</button><button class="cat-btn cancel" title="Cancelar">❌</button>`;
     nameInput.focus();
     nameInput.select();
-    
     actionsDiv.querySelector('.save').addEventListener('click', async () => {
         const newName = nameInput.value.trim();
         const newSubtitle = subtitleInput.value.trim();
-        
-        if (!newName) {
-            alert('El nombre de la categoría no puede estar vacío.');
-            return;
-        }
-        
+        if (!newName) { alert('El nombre de la categoría no puede estar vacío.'); return; }
         const exists = categories.some((c, i) => c.name.toLowerCase() === newName.toLowerCase() && i !== index);
-        if (exists) {
-            alert('Ya existe una categoría con ese nombre.');
-            return;
-        }
-        
-        await db.collection('categories').doc(cat.id).update({
-            name: newName,
-            subtitle: newSubtitle
-        });
-        
+        if (exists) { alert('Ya existe una categoría con ese nombre.'); return; }
+        await db.collection('categories').doc(cat.id).update({ name: newName, subtitle: newSubtitle });
         if (newName !== oldName) {
             const batch = db.batch();
             products.filter(p => p.category === oldName).forEach(p => {
@@ -573,32 +497,18 @@ async function editCategory(index) {
             await batch.commit();
         }
     });
-    
-    actionsDiv.querySelector('.cancel').addEventListener('click', () => {
-        renderCategoriesList();
-    });
-    
-    nameInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') { e.preventDefault(); actionsDiv.querySelector('.save').click(); }
-    });
-    subtitleInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') { e.preventDefault(); actionsDiv.querySelector('.save').click(); }
-    });
+    actionsDiv.querySelector('.cancel').addEventListener('click', () => { renderCategoriesList(); });
+    nameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); actionsDiv.querySelector('.save').click(); } });
+    subtitleInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); actionsDiv.querySelector('.save').click(); } });
 }
 
 async function deleteCategory(index) {
     const cat = categories[index];
     const productsInCategory = products.filter(p => p.category === cat.name).length;
-    
     let message = `¿Segura que quieres eliminar la categoría "${cat.name}"?`;
-    if (productsInCategory > 0) {
-        message += `\n\n⚠️ Hay ${productsInCategory} producto(s) en esta categoría. Se moverán a "Otros".`;
-    }
-    
+    if (productsInCategory > 0) { message += `\n\n⚠️ Hay ${productsInCategory} producto(s) en esta categoría. Se moverán a "Otros".`; }
     if (!confirm(message)) return;
-    
     await db.collection('categories').doc(cat.id).delete();
-    
     const hasOtros = categories.some(c => c.name === 'Otros');
     if (hasOtros) {
         const batch = db.batch();
@@ -607,41 +517,18 @@ async function deleteCategory(index) {
         });
         await batch.commit();
     }
-    
-    if (currentCategory === cat.name) {
-        currentCategory = 'all';
-    }
+    if (currentCategory === cat.name) { currentCategory = 'all'; }
 }
 
 addCategoryForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    if (!isAuthenticated) {
-        alert('❌ No tienes permisos.');
-        showLoginScreen();
-        return;
-    }
-    
+    if (!isAuthenticated) { alert('❌ No tienes permisos.'); showLoginScreen(); return; }
     const name = document.getElementById('newCategoryName').value.trim();
     const subtitle = document.getElementById('newCategorySubtitle').value.trim();
-    
-    if (!name) {
-        alert('El nombre de la categoría es obligatorio.');
-        return;
-    }
-    
+    if (!name) { alert('El nombre de la categoría es obligatorio.'); return; }
     const exists = categories.some(c => c.name.toLowerCase() === name.toLowerCase());
-    if (exists) {
-        alert('Ya existe una categoría con ese nombre.');
-        return;
-    }
-    
-    await db.collection('categories').add({
-        name: name,
-        subtitle: subtitle,
-        order: categories.length
-    });
-    
+    if (exists) { alert('Ya existe una categoría con ese nombre.'); return; }
+    await db.collection('categories').add({ name: name, subtitle: subtitle, order: categories.length });
     document.getElementById('newCategoryName').value = '';
     document.getElementById('newCategorySubtitle').value = '';
     alert(`✅ Categoría "${name}" agregada exitosamente.`);
@@ -661,13 +548,11 @@ function updateProductCategorySelect() {
 
 function renderSidebarCategories() {
     categoryFilter.innerHTML = '';
-    
     const allLi = document.createElement('li');
     allLi.className = currentCategory === 'all' ? 'active' : '';
     allLi.dataset.category = 'all';
     allLi.textContent = 'Todos';
     categoryFilter.appendChild(allLi);
-    
     categories.forEach(cat => {
         const li = document.createElement('li');
         li.className = currentCategory === cat.name ? 'active' : '';
@@ -675,7 +560,6 @@ function renderSidebarCategories() {
         li.textContent = cat.name;
         categoryFilter.appendChild(li);
     });
-    
     categoryFilter.querySelectorAll('li').forEach(li => {
         li.addEventListener('click', handleCategoryClick);
     });
@@ -690,20 +574,17 @@ function updateHeroIfCurrentCategory() {
 }
 
 // ==========================================
-// 14. GESTIÓN DE TESTIMONIOS
+// 14. TESTIMONIOS
 // ==========================================
 function renderTestimonials() {
     testimonialsGrid.innerHTML = '';
-    
     if (testimonials.length === 0) {
         testimonialsGrid.innerHTML = '<p style="text-align:center; color: var(--text-gray); padding: 40px;">Aún no hay testimonios. ¡Sé el primero en dejar uno!</p>';
         return;
     }
-    
     testimonials.forEach(testimonial => {
         const stars = '★'.repeat(testimonial.rating) + '☆'.repeat(5 - testimonial.rating);
         const initials = testimonial.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-        
         const card = document.createElement('div');
         card.className = 'testimonial-card glass-card';
         card.innerHTML = `
@@ -711,10 +592,7 @@ function renderTestimonials() {
             <p class="testimonial-text">"${testimonial.text}"</p>
             <div class="testimonial-author">
                 <div class="author-avatar">${initials}</div>
-                <div>
-                    <strong>${testimonial.name}</strong>
-                    <span>${testimonial.service}</span>
-                </div>
+                <div><strong>${testimonial.name}</strong><span>${testimonial.service}</span></div>
             </div>
         `;
         testimonialsGrid.appendChild(card);
@@ -723,12 +601,10 @@ function renderTestimonials() {
 
 function renderAdminTestimonials() {
     adminTestimonialsList.innerHTML = '';
-    
     if (testimonials.length === 0) {
         adminTestimonialsList.innerHTML = '<p style="text-align:center; color: var(--text-gray); padding: 20px;">No hay testimonios. Agrega uno abajo.</p>';
         return;
     }
-    
     testimonials.forEach((testimonial, index) => {
         const stars = '★'.repeat(testimonial.rating);
         const item = document.createElement('div');
@@ -744,7 +620,6 @@ function renderAdminTestimonials() {
         `;
         adminTestimonialsList.appendChild(item);
     });
-    
     document.querySelectorAll('.testimonial-item-delete').forEach(btn => {
         btn.addEventListener('click', async function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -760,28 +635,19 @@ function setupStarRating(container, input) {
     if (!container || !input) return;
     const stars = container.querySelectorAll('.star');
     let currentRating = 0;
-    
     stars.forEach(star => {
         star.addEventListener('click', function() {
             currentRating = parseInt(this.getAttribute('data-value'));
             input.value = currentRating;
-            stars.forEach((s, index) => {
-                s.classList.toggle('active', index < currentRating);
-            });
+            stars.forEach((s, index) => { s.classList.toggle('active', index < currentRating); });
         });
-        
         star.addEventListener('mouseenter', function() {
             const hoverValue = parseInt(this.getAttribute('data-value'));
-            stars.forEach((s, index) => {
-                s.style.color = index < hoverValue ? 'var(--accent-gold)' : '#ddd';
-            });
+            stars.forEach((s, index) => { s.style.color = index < hoverValue ? 'var(--accent-gold)' : '#ddd'; });
         });
     });
-    
     container.addEventListener('mouseleave', function() {
-        stars.forEach((s, index) => {
-            s.style.color = index < currentRating ? 'var(--accent-gold)' : '#ddd';
-        });
+        stars.forEach((s, index) => { s.style.color = index < currentRating ? 'var(--accent-gold)' : '#ddd'; });
     });
 }
 
@@ -806,17 +672,10 @@ testimonialForm.addEventListener('submit', function(e) {
     const service = document.getElementById('testimonialService').value;
     const text = document.getElementById('testimonialText').value;
     const rating = ratingValue.value;
-    
-    if (!rating) {
-        alert('Por favor selecciona una calificación de estrellas.');
-        return;
-    }
-    
+    if (!rating) { alert('Por favor selecciona una calificación de estrellas.'); return; }
     const stars = '★'.repeat(parseInt(rating));
     const message = `¡Hola +Q'Dtalles! Quiero dejar un testimonio:\n\n⭐ Calificación: ${stars}\n👤 Nombre: ${name}\n🎁 Producto/Servicio: ${service}\n\n💬 Comentario:\n"${text}"`;
-    
     window.open(`https://wa.me/${shopConfig.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
-    
     testimonialModal.style.display = 'none';
     testimonialForm.reset();
     ratingValue.value = '';
@@ -827,10 +686,8 @@ testimonialForm.addEventListener('submit', function(e) {
 addTestimonialForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     if (!isAuthenticated) { alert('❌ No tienes permisos.'); showLoginScreen(); return; }
-    
     const rating = adminRatingValue.value;
     if (!rating) { alert('Por favor selecciona una calificación de estrellas.'); return; }
-    
     await db.collection('testimonials').add({
         name: document.getElementById('adminTestimonialName').value,
         service: document.getElementById('adminTestimonialService').value,
@@ -838,7 +695,6 @@ addTestimonialForm.addEventListener('submit', async function(e) {
         rating: parseInt(rating),
         createdAt: Date.now()
     });
-    
     addTestimonialForm.reset();
     adminRatingValue.value = '';
     adminStarRating.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
@@ -846,7 +702,7 @@ addTestimonialForm.addEventListener('submit', async function(e) {
 });
 
 // ==========================================
-// 15. CONFIGURACIÓN DE LA TIENDA
+// 15. CONFIGURACIÓN
 // ==========================================
 function loadConfigForm() {
     document.getElementById('configWhatsapp').value = shopConfig.whatsapp;
@@ -863,7 +719,6 @@ function loadConfigForm() {
 saveConfigBtn.addEventListener('click', async function() {
     if (!isAuthenticated) { alert('❌ No tienes permisos.'); showLoginScreen(); return; }
     if (!confirm('¿Segura que quieres guardar los cambios de configuración?')) return;
-    
     shopConfig = {
         whatsapp: document.getElementById('configWhatsapp').value.trim(),
         email: document.getElementById('configEmail').value.trim(),
@@ -874,7 +729,6 @@ saveConfigBtn.addEventListener('click', async function() {
         facebook: document.getElementById('configFacebook').value.trim(),
         heroImage: document.getElementById('configHeroImage').value.trim()
     };
-    
     await db.collection('config').doc('shop').set(shopConfig);
     applyConfig();
     alert('✅ Configuración guardada exitosamente.');
@@ -883,28 +737,21 @@ saveConfigBtn.addEventListener('click', async function() {
 credentialsForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     if (!isAuthenticated) { alert('❌ No tienes permisos.'); showLoginScreen(); return; }
-    
     const newUser = document.getElementById('newUsername').value.trim();
     const newPass = document.getElementById('newPassword').value;
     const confirmPass = document.getElementById('confirmPassword').value;
-    
     if (!newUser || !newPass) { alert('Usuario y contraseña son obligatorios.'); return; }
     if (newPass.length < 4) { alert('La contraseña debe tener al menos 4 caracteres.'); return; }
     if (newPass !== confirmPass) { alert('Las contraseñas no coinciden.'); return; }
-    
     if (!confirm(`¿Segura que quieres cambiar las credenciales?\n\nNuevo usuario: ${newUser}\nNueva contraseña: ${'•'.repeat(newPass.length)}\n\nTendrás que iniciar sesión nuevamente.`)) return;
-    
     credentials = { username: newUser, password: newPass };
     await db.collection('config').doc('credentials').set(credentials);
-    
     document.getElementById('hintUser').textContent = credentials.username;
     document.getElementById('hintPass').textContent = credentials.password;
-    
     isAuthenticated = false;
     sessionStorage.removeItem('qdtalles_auth');
     credentialsForm.reset();
     document.getElementById('newUsername').value = newUser;
-    
     alert('✅ Credenciales actualizadas. Inicia sesión nuevamente.');
     showLoginScreen();
 });
@@ -916,15 +763,12 @@ function applyConfig() {
     } else {
         whatsappFloat.style.display = 'none';
     }
-    
     if (shopConfig.heroImage) heroImage.src = shopConfig.heroImage;
-    
     contactMethods.innerHTML = '';
     if (shopConfig.whatsapp) contactMethods.innerHTML += `<div class="contact-method"><div class="method-icon">${contactIcons.whatsapp}</div><div><strong>WhatsApp</strong><span>+${shopConfig.whatsapp}</span></div></div>`;
     if (shopConfig.email) contactMethods.innerHTML += `<div class="contact-method"><div class="method-icon">${contactIcons.email}</div><div><strong>Email</strong><span>${shopConfig.email}</span></div></div>`;
     if (shopConfig.location) contactMethods.innerHTML += `<div class="contact-method"><div class="method-icon">${contactIcons.location}</div><div><strong>Ubicación</strong><span>${shopConfig.location}</span></div></div>`;
     if (shopConfig.hours) contactMethods.innerHTML += `<div class="contact-method"><div class="method-icon">${contactIcons.hours}</div><div><strong>Horario</strong><span>${shopConfig.hours}</span></div></div>`;
-    
     contactSocial.innerHTML = '';
     if (shopConfig.instagram) contactSocial.innerHTML += `<a href="${shopConfig.instagram}" target="_blank" class="social-link">Instagram</a>`;
     if (shopConfig.tiktok) contactSocial.innerHTML += `<a href="${shopConfig.tiktok}" target="_blank" class="social-link">TikTok</a>`;
@@ -932,12 +776,11 @@ function applyConfig() {
 }
 
 // ==========================================
-// 16. FUNCIONES DE PRODUCTOS
+// 16. PRODUCTOS
 // ==========================================
 function renderProducts() {
     productGrid.innerHTML = '';
     const filteredProducts = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
-
     if (filteredProducts.length === 0) {
         emptyState.classList.remove('hidden');
     } else {
@@ -945,7 +788,6 @@ function renderProducts() {
         filteredProducts.forEach(product => {
             const whatsappMessage = encodeURIComponent(`Hola +Q'Dtalles, me interesa el producto: ${product.title}`);
             const whatsappLink = `https://wa.me/${shopConfig.whatsapp}?text=${whatsappMessage}`;
-            
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
@@ -970,7 +812,6 @@ function handleCategoryClick(e) {
     categoryFilter.querySelectorAll('li').forEach(li => li.classList.remove('active'));
     e.target.classList.add('active');
     currentCategory = e.target.getAttribute('data-category');
-    
     const data = getCategoryData()[currentCategory];
     heroContent.classList.add('exit-up');
     setTimeout(() => {
@@ -980,21 +821,15 @@ function handleCategoryClick(e) {
         heroContent.classList.add('enter-down');
         setTimeout(() => heroContent.classList.remove('enter-down'), 600);
     }, 500);
-    
     productGrid.classList.remove('animating');
     void productGrid.offsetWidth;
     productGrid.classList.add('animating');
-    
-    setTimeout(() => {
-        renderProducts();
-        isAnimating = false;
-    }, 300);
+    setTimeout(() => { renderProducts(); isAnimating = false; }, 300);
 }
 
 productForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     if (!isAuthenticated) { alert('❌ No tienes permisos.'); showLoginScreen(); return; }
-    
     await db.collection('products').add({
         title: document.getElementById('prodTitle').value,
         category: document.getElementById('prodCategory').value,
@@ -1004,7 +839,6 @@ productForm.addEventListener('submit', async function(e) {
         tiktok: document.getElementById('prodTiktok').value,
         createdAt: Date.now()
     });
-    
     productForm.reset();
     alert('✅ ¡Producto guardado exitosamente en la nube!');
 });
@@ -1020,7 +854,7 @@ clearStorageBtn.addEventListener('click', async function() {
 });
 
 // ==========================================
-// 17. FORMULARIO DE CONTACTO
+// 17. CONTACTO
 // ==========================================
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1028,7 +862,6 @@ contactForm.addEventListener('submit', function(e) {
     const clientEmail = document.getElementById('contactEmail').value;
     const service = document.getElementById('contactService').value;
     const message = document.getElementById('contactMessage').value;
-    
     if (shopConfig.email) {
         const subject = encodeURIComponent(`Consulta de ${name} - Servicio: ${service}`);
         const body = encodeURIComponent(`Hola +Q'Dtalles,\n\nSoy ${name} (${clientEmail}).\n\nMe interesa el servicio de: ${service}.\n\nMensaje:\n${message}`);
@@ -1043,7 +876,7 @@ contactForm.addEventListener('submit', function(e) {
 });
 
 // ==========================================
-// 18. ANIMACIONES AL HACER SCROLL
+// 18. ANIMACIONES SCROLL
 // ==========================================
 const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {

@@ -1,5 +1,5 @@
 // ==========================================
-// 1. CONFIGURACIÓN DE FIREBASE (TUS CREDENCIALES REALES)
+// 1. CONFIGURACIÓN DE FIREBASE
 // ==========================================
 const firebaseConfig = {
     apiKey: "AIzaSyBLEBxZMLLjHpeLX0XiKOLU4Ky572Z3Gdo",
@@ -151,7 +151,87 @@ const adminStarRating = document.getElementById('adminStarRating');
 const adminRatingValue = document.getElementById('adminRatingValue');
 
 // ==========================================
-// 7. FUNCIONES AUXILIARES
+// 7. MENÚ HAMBURGUESA Y NAVEGACIÓN MÓVIL
+// ==========================================
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mainNav = document.getElementById('mainNav');
+const navOverlay = document.getElementById('navOverlay');
+const navLinks = document.querySelectorAll('.nav-link');
+
+// Toggle menú hamburguesa
+function toggleMenu() {
+    if (!hamburgerBtn || !mainNav || !navOverlay) return;
+    hamburgerBtn.classList.toggle('active');
+    mainNav.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+}
+
+// Cerrar menú
+function closeMenu() {
+    if (!hamburgerBtn || !mainNav || !navOverlay) return;
+    hamburgerBtn.classList.remove('active');
+    mainNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Event listeners del menú hamburguesa
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+if (navOverlay) navOverlay.addEventListener('click', closeMenu);
+
+// Cerrar menú al hacer clic en un enlace
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        closeMenu();
+        
+        // Actualizar enlace activo
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// Cerrar menú con tecla Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mainNav && mainNav.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+// Header con sombra al hacer scroll
+const header = document.querySelector('.header');
+if (header) {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+// Marcar enlace activo según la sección visible
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// ==========================================
+// 8. FUNCIONES AUXILIARES
 // ==========================================
 function getCategoryData() {
     const data = { 'all': { title: 'Todas las Categorías', subtitle: 'Explora todas nuestras creaciones' } };
@@ -165,7 +245,7 @@ function getCategoryData() {
 }
 
 // ==========================================
-// 8. CARGAR DATOS DESDE FIREBASE (TIEMPO REAL)
+// 9. CARGAR DATOS DESDE FIREBASE (TIEMPO REAL)
 // ==========================================
 function loadFromFirebase() {
     // Cargar configuración
@@ -240,7 +320,7 @@ function loadFromFirebase() {
 }
 
 // ==========================================
-// 9. SISTEMA DE AUTENTICACIÓN
+// 10. SISTEMA DE AUTENTICACIÓN
 // ==========================================
 function checkAuthStatus() {
     if (sessionStorage.getItem('qdtalles_auth') === 'true') {
@@ -332,10 +412,11 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ==========================================
-// 10. TOGGLE PASSWORD (OJITO)
+// 11. TOGGLE PASSWORD (OJITO)
 // ==========================================
 function setupPasswordToggle(toggleBtn, inputId) {
     const input = document.getElementById(inputId);
+    if (!input || !toggleBtn) return;
     const eyeOpen = toggleBtn.querySelector('.eye-open');
     const eyeClosed = toggleBtn.querySelector('.eye-closed');
     
@@ -361,7 +442,7 @@ document.querySelectorAll('.toggle-password[data-target]').forEach(btn => {
 });
 
 // ==========================================
-// 11. TABS DE ADMINISTRACIÓN
+// 12. TABS DE ADMINISTRACIÓN
 // ==========================================
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabContents = {
@@ -382,7 +463,7 @@ tabBtns.forEach(btn => {
 });
 
 // ==========================================
-// 12. GESTIÓN DE CATEGORÍAS
+// 13. GESTIÓN DE CATEGORÍAS
 // ==========================================
 function renderCategoriesList() {
     categoriesList.innerHTML = '';
@@ -582,6 +663,7 @@ addCategoryForm.addEventListener('submit', async function(e) {
 
 function updateProductCategorySelect() {
     const select = document.getElementById('prodCategory');
+    if (!select) return;
     select.innerHTML = '';
     categories.forEach(cat => {
         const option = document.createElement('option');
@@ -622,7 +704,7 @@ function updateHeroIfCurrentCategory() {
 }
 
 // ==========================================
-// 13. GESTIÓN DE TESTIMONIOS
+// 14. GESTIÓN DE TESTIMONIOS
 // ==========================================
 function renderTestimonials() {
     testimonialsGrid.innerHTML = '';
@@ -689,6 +771,7 @@ function renderAdminTestimonials() {
 }
 
 function setupStarRating(container, input) {
+    if (!container || !input) return;
     const stars = container.querySelectorAll('.star');
     let currentRating = 0;
     
@@ -777,7 +860,7 @@ addTestimonialForm.addEventListener('submit', async function(e) {
 });
 
 // ==========================================
-// 14. CONFIGURACIÓN DE LA TIENDA
+// 15. CONFIGURACIÓN DE LA TIENDA
 // ==========================================
 function loadConfigForm() {
     document.getElementById('configWhatsapp').value = shopConfig.whatsapp;
@@ -863,7 +946,7 @@ function applyConfig() {
 }
 
 // ==========================================
-// 15. FUNCIONES DE PRODUCTOS
+// 16. FUNCIONES DE PRODUCTOS
 // ==========================================
 function renderProducts() {
     productGrid.innerHTML = '';
@@ -951,7 +1034,7 @@ clearStorageBtn.addEventListener('click', async function() {
 });
 
 // ==========================================
-// 16. FORMULARIO DE CONTACTO
+// 17. FORMULARIO DE CONTACTO
 // ==========================================
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -974,7 +1057,7 @@ contactForm.addEventListener('submit', function(e) {
 });
 
 // ==========================================
-// 17. ANIMACIONES AL HACER SCROLL
+// 18. ANIMACIONES AL HACER SCROLL
 // ==========================================
 const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
@@ -993,7 +1076,7 @@ document.querySelectorAll('.service-card, .process-step, .testimonial-card, .con
 });
 
 // ==========================================
-// 18. INICIALIZACIÓN
+// 19. INICIALIZACIÓN
 // ==========================================
 handleIntro();
 checkAuthStatus();

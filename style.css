@@ -694,3 +694,24 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         font-size: 0.85rem !important;
     }
 }
+/* ==========================================
+   AJUSTE: Subir botón de WhatsApp y ocultar letrero Netlify
+   ========================================== */
+
+/* Subir el botón de WhatsApp para que no lo tape el letrero */
+.whatsapp-float {
+    bottom: 100px !important; /* Cambiado de 30px a 100px para subirlo */
+}
+
+/* Ocultar el letrero "Powered by Netlify" */
+.netlify-badge,
+[class*="netlify-badge"],
+[data-netlify-badge] {
+    display: none !important;
+}
+
+/* Alternativa: ocultar cualquier elemento con texto "Powered by Netlify" */
+div:has(> span:contains("Powered by Netlify")),
+footer:has(span:contains("Netlify")) {
+    display: none !important;
+}

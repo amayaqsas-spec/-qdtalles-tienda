@@ -203,7 +203,8 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 }
 
 /* ==========================================
-   INTRO ANIMADO CON CORAZONES GRANDES Y FADE OUT SUAVE
+   INTRO DE BIENVENIDA CON LOGO Y TEXTO
+   FADE OUT MUY SUAVE (2.5 segundos)
    ========================================== */
 .intro-screen {
     position: fixed;
@@ -217,11 +218,11 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* TRANSICIÓN SUAVE Y LARGA para el fade out delicado */
-    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+    /* FADE OUT MUY LARGO Y SUAVE */
+    transition: opacity 2.5s ease-in-out, visibility 2.5s ease-in-out;
 }
 
-/* Cuando se agrega la clase hidden, se desvanece suavemente */
+/* Cuando se agrega la clase hidden, se desvanece MUY suavemente */
 .intro-screen.hidden { 
     opacity: 0; 
     visibility: hidden; 
@@ -255,7 +256,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     opacity: 0.3;
 }
 
-/* 6 corazones grandes en diferentes posiciones (como los círculos anteriores) */
+/* 6 corazones grandes en diferentes posiciones */
 .intro-heart:nth-child(1) {
     width: 350px;
     height: 350px;
@@ -343,7 +344,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     }
 }
 
-/* Contenido del intro (logo) */
+/* Contenido del intro (logo + texto) */
 .intro-content { 
     position: relative; 
     z-index: 10; 
@@ -353,20 +354,22 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 30px 40px;
+    max-width: 900px;
 }
 
-/* Logo con animación de latido de corazón */
+/* Logo más pequeño para dar espacio al texto */
 .intro-logo-img {
-    width: 280px;
+    width: 200px;
     height: auto;
-    max-width: 70vw;
-    max-height: 70vh;
+    max-width: 50vw;
+    max-height: 30vh;
     opacity: 0;
     transform: scale(0.7);
     animation: logoAppear 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards, logoHeartbeat 1.5s ease-in-out 1.5s infinite;
     filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
     object-fit: contain;
+    margin-bottom: 20px;
 }
 
 @keyframes logoAppear {
@@ -396,6 +399,67 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
         transform: scale(1); 
         filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.3));
     }
+}
+
+/* Contenedor del texto de bienvenida */
+.intro-text {
+    opacity: 0;
+    animation: textFadeIn 1.5s ease-out 1s forwards;
+    text-align: center;
+    max-width: 700px;
+}
+
+@keyframes textFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Título de bienvenida */
+.intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.intro-title .highlight {
+    background: var(--gradient-pink-purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+}
+
+/* Párrafos del intro */
+.intro-paragraph {
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+/* Frase de agradecimiento destacada */
+.intro-thanks {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--primary-pink);
+    margin: 20px 0;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(255, 42, 133, 0.2);
+}
+
+/* Frase final (cita) */
+.intro-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--primary-purple);
+    font-style: italic;
+    margin-top: 15px;
+    line-height: 1.5;
+    font-weight: 600;
 }
 
 /* ==========================================
@@ -787,7 +851,7 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
 .admin-btn-visible:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(123, 45, 142, 0.4); }
 
 /* ==========================================
-   WHATSAPP FLOTANTE (SUBIDO PARA NO TAPAR CON NETLIFY)
+   WHATSAPP FLOTANTE
    ========================================== */
 .whatsapp-float { 
     position: fixed; 
@@ -909,6 +973,11 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     
     .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .testimonials-grid { grid-template-columns: 1fr; }
+    
+    .intro-title { font-size: 1.8rem; }
+    .intro-paragraph { font-size: 0.95rem; }
+    .intro-thanks { font-size: 1.5rem; }
+    .intro-quote { font-size: 1rem; }
 }
 
 /* ==========================================
@@ -974,11 +1043,22 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .hero-title-banner { font-size: 2rem; }
     .hero-subtitle-banner { font-size: 1rem; }
     
-    .intro-logo-img { 
-        width: 240px; 
-        max-width: 65vw;
-        max-height: 60vh;
+    /* Intro responsive */
+    .intro-content {
+        padding: 20px 25px;
     }
+    
+    .intro-logo-img { 
+        width: 160px; 
+        max-width: 45vw;
+        max-height: 25vh;
+        margin-bottom: 15px;
+    }
+    
+    .intro-title { font-size: 1.5rem; margin-bottom: 15px; }
+    .intro-paragraph { font-size: 0.9rem; margin-bottom: 10px; }
+    .intro-thanks { font-size: 1.3rem; margin: 15px 0; }
+    .intro-quote { font-size: 0.95rem; }
     
     .intro-heart:nth-child(1) { width: 250px; height: 250px; font-size: 150px; }
     .intro-heart:nth-child(2) { width: 220px; height: 220px; font-size: 130px; }
@@ -1106,11 +1186,22 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .category-actions { width: 100%; justify-content: flex-end; margin-top: 5px; }
     .category-subtitle { display: none; }
     
-    .intro-logo-img { 
-        width: 200px; 
-        max-width: 60vw;
-        max-height: 50vh;
+    /* Intro móvil */
+    .intro-content {
+        padding: 15px 20px;
     }
+    
+    .intro-logo-img { 
+        width: 130px; 
+        max-width: 40vw;
+        max-height: 20vh;
+        margin-bottom: 12px;
+    }
+    
+    .intro-title { font-size: 1.3rem; margin-bottom: 12px; }
+    .intro-paragraph { font-size: 0.85rem; margin-bottom: 8px; }
+    .intro-thanks { font-size: 1.1rem; margin: 12px 0; }
+    .intro-quote { font-size: 0.85rem; }
     
     .intro-heart:nth-child(1) { width: 180px; height: 180px; font-size: 110px; }
     .intro-heart:nth-child(2) { width: 160px; height: 160px; font-size: 100px; }
@@ -1164,11 +1255,22 @@ body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); co
     .product-grid { grid-template-columns: 1fr; }
     .hero-title-banner { font-size: 1.3rem; }
     
-    .intro-logo-img { 
-        width: 180px; 
-        max-width: 55vw;
-        max-height: 45vh;
+    /* Intro móvil pequeño */
+    .intro-content {
+        padding: 12px 15px;
     }
+    
+    .intro-logo-img { 
+        width: 110px; 
+        max-width: 38vw;
+        max-height: 18vh;
+        margin-bottom: 10px;
+    }
+    
+    .intro-title { font-size: 1.15rem; margin-bottom: 10px; }
+    .intro-paragraph { font-size: 0.8rem; margin-bottom: 7px; }
+    .intro-thanks { font-size: 1rem; margin: 10px 0; }
+    .intro-quote { font-size: 0.8rem; }
     
     .intro-heart:nth-child(1) { width: 140px; height: 140px; font-size: 85px; }
     .intro-heart:nth-child(2) { width: 120px; height: 120px; font-size: 75px; }

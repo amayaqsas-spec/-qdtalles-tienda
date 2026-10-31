@@ -15,18 +15,23 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // ==========================================
-// 2. INTRO ANIMADO
+// 2. INTRO ANIMADO (TIEMPO EXTENDIDO + FADE OUT SUAVE)
 // ==========================================
 function handleIntro() {
     const intro = document.getElementById('intro');
     if (!intro) return;
     
+    // Tiempo extendido a 8 segundos para apreciar los latidos
+    // Aparece en 0.3s + 1.2s = 1.5s
+    // Luego 4-5 latidos de 1.5s cada uno = ~7.5s total
     setTimeout(() => {
+        // Agregar clase hidden que activa el fade out suave
         intro.classList.add('hidden');
+        // Esperar a que termine la transición de opacidad antes de ocultar
         setTimeout(() => {
             intro.style.display = 'none';
-        }, 800);
-    }, 3500);
+        }, 1500); // Mismo tiempo que la transición CSS
+    }, 8000);
 }
 
 // ==========================================
@@ -159,7 +164,6 @@ const navOverlay = document.getElementById('navOverlay');
 const navLinks = document.querySelectorAll('.nav-link');
 const logoFloat = document.getElementById('logoFloat');
 
-// Toggle menú hamburguesa
 function toggleMenu() {
     if (!hamburgerBtn || !sideNav || !navOverlay) return;
     hamburgerBtn.classList.toggle('active');
@@ -168,7 +172,6 @@ function toggleMenu() {
     document.body.style.overflow = sideNav.classList.contains('active') ? 'hidden' : '';
 }
 
-// Cerrar menú
 function closeMenu() {
     if (!hamburgerBtn || !sideNav || !navOverlay) return;
     hamburgerBtn.classList.remove('active');
@@ -177,36 +180,29 @@ function closeMenu() {
     document.body.style.overflow = '';
 }
 
-// Event listeners del menú hamburguesa
 if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
 if (navOverlay) navOverlay.addEventListener('click', closeMenu);
 
-// Cerrar menú al hacer clic en un enlace
 navLinks.forEach(link => {
     link.addEventListener('click', function() {
         closeMenu();
-        
-        // Actualizar enlace activo
         navLinks.forEach(l => l.classList.remove('active'));
         this.classList.add('active');
     });
 });
 
-// Cerrar menú con tecla Escape
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && sideNav && sideNav.classList.contains('active')) {
         closeMenu();
     }
 });
 
-// Logo flotante - clic para ir al inicio
 if (logoFloat) {
     logoFloat.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
-// Marcar enlace activo según la sección visible
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', function() {
     let current = '';
@@ -243,7 +239,6 @@ function getCategoryData() {
 // 9. CARGAR DATOS DESDE FIREBASE (TIEMPO REAL)
 // ==========================================
 function loadFromFirebase() {
-    // Cargar configuración
     db.collection('config').doc('shop').onSnapshot((doc) => {
         if (doc.exists) {
             shopConfig = { ...DEFAULT_CONFIG, ...doc.data() };
@@ -253,7 +248,6 @@ function loadFromFirebase() {
         applyConfig();
     });
 
-    // Cargar credenciales
     db.collection('config').doc('credentials').onSnapshot((doc) => {
         if (doc.exists) {
             credentials = { ...DEFAULT_CREDENTIALS, ...doc.data() };
@@ -264,7 +258,6 @@ function loadFromFirebase() {
         document.getElementById('hintPass').textContent = credentials.password;
     });
 
-    // Cargar categorías
     db.collection('categories').orderBy('order').onSnapshot((snapshot) => {
         if (snapshot.empty) {
             const batch = db.batch();
@@ -285,7 +278,6 @@ function loadFromFirebase() {
         }
     });
 
-    // Cargar productos
     db.collection('products').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
         products = snapshot.docs.map(doc => ({
             id: doc.id,
@@ -294,7 +286,6 @@ function loadFromFirebase() {
         renderProducts();
     });
 
-    // Cargar testimonios
     db.collection('testimonials').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
         if (snapshot.empty) {
             const batch = db.batch();
